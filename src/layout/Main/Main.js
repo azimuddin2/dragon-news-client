@@ -10,19 +10,21 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <Container>
-                <Row>
-                    <Col lg="2">
-                        <LeftSideNav></LeftSideNav>
-                    </Col>
-                    <Col lg="7">
-                        <Outlet></Outlet>
-                    </Col>
-                    <Col lg="3">
-                        <RightSideNav></RightSideNav>
-                    </Col>
-                </Row>
-            </Container>
+            <div className='bg-light py-5'>
+                <Container>
+                    <Row>
+                        <Col lg="2">
+                            <LeftSideNav></LeftSideNav>
+                        </Col>
+                        <Col lg="7">
+                            <Outlet></Outlet>
+                        </Col>
+                        <Col lg="3">
+                            <RightSideNav></RightSideNav>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
             <Footer></Footer>
         </div>
     );

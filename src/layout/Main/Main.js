@@ -13,13 +13,13 @@ const Main = () => {
             <div className='bg-light py-5'>
                 <Container>
                     <Row>
-                        <Col lg="2">
+                        <Col lg="2" className='d-none d-lg-block'>
                             <LeftSideNav></LeftSideNav>
                         </Col>
                         <Col lg="7">
                             <Outlet></Outlet>
                         </Col>
-                        <Col lg="3">
+                        <Col lg="3" className='d-none d-lg-block'>
                             <RightSideNav></RightSideNav>
                         </Col>
                     </Row>

@@ -5,14 +5,15 @@ import { MdAdd } from 'react-icons/md';
 import { FaUserCircle } from 'react-icons/fa';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import RightSideNav from '../RightSideNav/RightSideNav';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <div>
             {['xl'].map((expand) => (
-                <Navbar className='container' key={expand} bg="white" expand={expand}>
+                <Navbar className='container' key={expand} bg="white" expand={expand} >
                     <Container fluid>
-                        <Navbar.Brand href="#" className='d-flex align-items-end'>
+                        <Navbar.Brand as={Link} to='/' className='d-flex align-items-end'>
                             <SiDesignernews className='text-primary fs-1'></SiDesignernews>
                             <span className='fs-5'>Dragon News</span>
                         </Navbar.Brand>

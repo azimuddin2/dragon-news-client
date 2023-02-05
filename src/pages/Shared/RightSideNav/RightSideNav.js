@@ -4,7 +4,7 @@ import { FaGoogle, FaGithub, FaFacebook, FaYoutube, FaTwitter, FaWhatsapp, FaLin
 
 const RightSideNav = () => {
     return (
-        <div>
+        <div className='position-sticky top-0'>
             <ButtonGroup className='w-100' vertical>
                 <Button className='d-flex align-items-center justify-content-center mb-2' variant="outline-primary">
                     <FaGoogle></FaGoogle>

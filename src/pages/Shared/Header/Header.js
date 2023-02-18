@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import { SiDesignernews } from 'react-icons/si';
 import { MdAdd } from 'react-icons/md';
 import { FaUserCircle } from 'react-icons/fa';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import RightSideNav from '../RightSideNav/RightSideNav';
 import { Link } from 'react-router-dom';
+import logo from '../../../image/logo.png';
 
 const Header = () => {
     return (
@@ -13,9 +13,9 @@ const Header = () => {
             {['xl'].map((expand) => (
                 <Navbar className='container' key={expand} bg="white" expand={expand} >
                     <Container fluid>
-                        <Navbar.Brand as={Link} to='/' className='d-flex align-items-end'>
-                            <SiDesignernews className='text-primary fs-1'></SiDesignernews>
-                            <span className='fs-5'>Dragon News</span>
+                        <Navbar.Brand as={Link} to='/' className='d-flex align-items-center'>
+                            <img style={{ height: '40px'}} src={logo} alt="" />
+                            <span className='fs-5 fw-semibold ms-1'>Dragon News</span>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
@@ -24,8 +24,9 @@ const Header = () => {
                             placement="end"
                         >
                             <Offcanvas.Header closeButton>
-                                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                    Dragon News
+                                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} className='d-flex align-items-center'>
+                                    <img style={{ height: '40px', margin: '0' }} src={logo} alt="" />
+                                    <span className='fs-5 fw-semibold ms-1'>Dragon News</span>
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>

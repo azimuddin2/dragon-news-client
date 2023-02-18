@@ -5,10 +5,19 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import RightSideNav from '../RightSideNav/RightSideNav';
 import { Link } from 'react-router-dom';
 import logo from '../../../image/logo.png';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                toast.error(error.message);
+            })
+    }
 
     return (
         <div>
@@ -39,21 +48,29 @@ const Header = () => {
                                             <span>Advertise</span>
                                         </Button>
                                     </Nav.Link> */}
-                                    <Nav.Link as={Link} to="/register">
-                                        <Button variant="primary">Register</Button>
-                                    </Nav.Link>
-                                    <Nav.Link as={Link} to="/login">
-                                        <Button variant="danger">Login</Button>
-                                    </Nav.Link>
+                                    {
+                                        user?.uid ?
+                                            <>
+                                                <Button variant="primary" onClick={handleLogOut}>Logout</Button>
+                                                <span className='ms-2'>{user?.displayName}</span>
+                                            </>
+                                            :
+                                            <>
+                                                <Nav.Link as={Link} to="/register">
+                                                    <Button variant="primary">Register</Button>
+                                                </Nav.Link>
+                                                <Nav.Link as={Link} to="/login">
+                                                    <Button variant="danger">Login</Button>
+                                                </Nav.Link>
+                                            </>
+                                    }
                                     <Nav.Link as={Link} to="/profile-setting">
-                                        <>
-                                            {
-                                                user?.photoURL ?
-                                                    <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL}></Image>
-                                                    :
-                                                    <FaUserCircle className='fs-3'></FaUserCircle>
-                                            }
-                                        </>
+                                        {
+                                            user?.photoURL ?
+                                                <Image className='border border-2 border-warning' style={{ height: '34px' }} roundedCircle src={user?.photoURL}></Image>
+                                                :
+                                                <FaUserCircle className='fs-3'></FaUserCircle>
+                                        }
                                     </Nav.Link>
                                 </Nav>
                                 <div className='d-lg-none mt-3'>

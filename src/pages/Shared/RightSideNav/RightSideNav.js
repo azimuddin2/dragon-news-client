@@ -1,12 +1,33 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { Button, ButtonGroup, ListGroup } from 'react-bootstrap';
 import { FaGoogle, FaGithub, FaFacebook, FaYoutube, FaTwitter, FaWhatsapp, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const RightSideNav = () => {
+    const { signInWithGoogle } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleSignInWithGoogle = () => {
+        signInWithGoogle(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    };
+
     return (
         <div className='sticky-lg-top'>
             <ButtonGroup className='w-100' vertical>
-                <Button className='d-flex align-items-center justify-content-center mb-2' variant="outline-primary">
+                <Button
+                    onClick={handleSignInWithGoogle}
+                    className='d-flex align-items-center justify-content-center mb-2'
+                    variant="outline-primary"
+                >
                     <FaGoogle></FaGoogle>
                     <span className='ms-1'>Login via Google</span>
                 </Button>

@@ -2,9 +2,14 @@ import React, { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -14,19 +19,20 @@ const Register = () => {
         const password = form.password.value;
 
         createUser(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            form.reset();
-            toast.success('Register Successful');
-        })
-        .catch(error => {
-            toast.error(error.message)
-        }) 
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                toast.success('Register Successful');
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
     };
 
     return (
-        <div className='p-4'>
+        <div className='p-5 shadow-sm bg-white rounded'>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Your name</Form.Label>

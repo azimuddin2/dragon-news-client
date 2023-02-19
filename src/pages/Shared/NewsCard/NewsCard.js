@@ -6,7 +6,6 @@ import { FaEye, FaRegBookmark, FaShareAlt, FaStar, FaUserCircle } from 'react-ic
 
 const NewsCard = ({ news }) => {
     const { _id, title, image_url, details, author, rating, total_view } = news;
-    console.log(news);
 
     return (
         <div>
@@ -22,7 +21,7 @@ const NewsCard = ({ news }) => {
                                         roundedCircle>
                                     </Image>
                                     :
-                                    <FaUserCircle style={{fontSize: '40px'}}></FaUserCircle>
+                                    <FaUserCircle style={{ fontSize: '40px' }}></FaUserCircle>
                             }
                             <div className='ms-2'>
                                 <h6 className='mb-0'>{author?.name}</h6>
@@ -39,9 +38,9 @@ const NewsCard = ({ news }) => {
                         <Card.Img variant="top" src={image_url} />
                         <Card.Text className='mt-3'>
                             {details.length > 200 ?
-                                <p>{details.slice(0, 200) + '...'} <Link to={`/news/${_id}`}>Read More</Link></p>
+                                <>{details.slice(0, 200) + '...'} <Link to={`/news/${_id}`}>Read More</Link></>
                                 :
-                                <p>{details}</p>
+                                <>{details}</>
                             }
                         </Card.Text>
                     </Card.Body>

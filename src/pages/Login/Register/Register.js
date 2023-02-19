@@ -2,15 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const [accepted, setAccepted] = useState(false);
-    const { createUser } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    const from = location.state?.from?.pathname || '/';
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -24,10 +20,31 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                toast.success('Register Successful');
-                navigate(from, { replace: true });
+                handleUpdateUserProfile(name);
+                handleVerifyEmail();
+                toast.success('Please verify your email address.');
             })
             .catch(error => {
+                toast.error(error.message)
+            })
+    };
+
+
+    const handleUpdateUserProfile = (name) => {
+        const profile = {
+            displayName: name,
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => {
+                toast.error(error.message)
+            })
+    };
+
+    const handleVerifyEmail = () => {
+        verifyEmail()
+            .then(() => { })
+            .catch((error) => {
                 toast.error(error.message)
             })
     };

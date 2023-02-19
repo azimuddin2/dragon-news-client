@@ -64,12 +64,12 @@ const Header = () => {
                                                 </Nav.Link>
                                             </>
                                     }
-                                    <Nav.Link as={Link} to="/profile-setting">
+                                    <Nav.Link as={Link} to="/profile">
                                         {
                                             user?.photoURL ?
                                                 <Image className='border border-2 border-warning' style={{ height: '34px' }} roundedCircle src={user?.photoURL}></Image>
                                                 :
-                                                <FaUserCircle className='fs-3'></FaUserCircle>
+                                                <FaUserCircle title='Profile Updated' className='fs-3'></FaUserCircle>
                                         }
                                     </Nav.Link>
                                 </Nav>

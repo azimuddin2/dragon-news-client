@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const [accepted, setAccepted] = useState(false);
     const { createUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -50,9 +51,12 @@ const Register = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check
+                        type="checkbox"
+                        onClick={() => setAccepted(!accepted)}
+                        label={<>Accept <Link to='/terms'>Terms and conditions</Link></>} />
                 </Form.Group>
-                <Button className='px-4' variant="primary" type="submit">Register</Button>
+                <Button disabled={!accepted} className='px-4' variant="primary" type="submit">Register</Button>
             </Form>
         </div>
     );

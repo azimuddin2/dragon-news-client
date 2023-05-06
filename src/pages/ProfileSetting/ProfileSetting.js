@@ -33,7 +33,7 @@ const ProfileSetting = () => {
                 <img className='w-75' src={personalSetting} alt="" />
             </div>
 
-            <div className='p-5 shadow-sm bg-white rounded'>
+            <div className='p-3 p-lg-5 shadow-sm bg-white rounded'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Your name</Form.Label>

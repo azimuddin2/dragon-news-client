@@ -49,7 +49,7 @@ const Header = () => {
                                         </Button>
                                     </Nav.Link> */}
                                     {
-                                        user?.uid ?
+                                        user?.uid || user?.email ?
                                             <>
                                                 <Button variant="primary" onClick={handleLogOut}>Logout</Button>
                                                 <span className='ms-2'>{user?.displayName}</span>

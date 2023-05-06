@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import CustomLink from '../CustomLink/CustomLink';
 
 const LeftSideNav = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://dragon-news-server-rouge-eight.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data));
     }, [])
@@ -16,9 +16,9 @@ const LeftSideNav = () => {
             <div>
                 {
                     categories.map(category => <p key={category._id}>
-                        <Link to={`/category/${category._id}`}>
+                        <CustomLink to={`/category/${category._id}`}>
                             {category.name}
-                        </Link>
+                        </CustomLink>
                     </p>)
                 }
             </div>

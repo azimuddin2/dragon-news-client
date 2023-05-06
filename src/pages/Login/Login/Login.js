@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const [accepted, setAccepted] = useState(false);
     const { signIn, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -38,7 +39,7 @@ const Login = () => {
     }
 
     return (
-        <div className='p-5 shadow-sm bg-white rounded'>
+        <div className='p-3 p-lg-5 shadow-sm bg-white rounded'>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -51,9 +52,13 @@ const Login = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check 
+                    onClick={ () => setAccepted(!accepted)}
+                    type="checkbox" 
+                    label="Check me out" 
+                    />
                 </Form.Group>
-                <Button className='px-4' variant="primary" type="submit">Login</Button>
+                <Button disabled={!accepted} className='px-4' variant="primary" type="submit">Login</Button>
             </Form>
         </div>
     );

@@ -18,21 +18,21 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>,
                 loader: () => {
-                    return fetch('http://localhost:5000/news')
+                    return fetch('https://dragon-news-server-rouge-eight.vercel.app/news')
                 }
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/category/${params.id}`)
+                    return fetch(`https://dragon-news-server-rouge-eight.vercel.app/category/${params.id}`)
                 }
             },
             {
                 path: '/news/:id',
                 element: <PrivateRoute><News></News></PrivateRoute>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/news/${params.id}`)
+                    return fetch(`https://dragon-news-server-rouge-eight.vercel.app/news/${params.id}`)
                 }
             },
             {

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            <p>copyright @ dragon news</p>
+        <div className='text-center mt-3'>
+            <p>Copyright © Dragon News 2023</p>
         </div>
     );
 };

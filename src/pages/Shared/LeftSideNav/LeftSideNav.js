@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import CustomLink from '../CustomLink/CustomLink';
+import CustomLink from '../../../components/CustomLink/CustomLink';
+
 
 const LeftSideNav = () => {
     const [categories, setCategories] = useState([]);

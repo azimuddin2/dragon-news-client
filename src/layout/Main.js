@@ -5,10 +5,12 @@ import Footer from '../pages/Shared/Footer/Footer';
 import Header from '../pages/Shared/Header/Header';
 import LeftSideNav from '../pages/Shared/LeftSideNav/LeftSideNav';
 import RightSideNav from '../pages/Shared/RightSideNav/RightSideNav';
+import Heading from '../pages/Shared/Heading/Heading';
 
 const Main = () => {
     return (
         <div>
+            <Heading></Heading>
             <Header></Header>
             <div className='bg-light py-5'>
                 <Container>

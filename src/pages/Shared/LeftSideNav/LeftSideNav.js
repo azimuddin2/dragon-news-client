@@ -13,7 +13,7 @@ const LeftSideNav = () => {
 
     return (
         <div className='sticky-lg-top'>
-            <h4>All Category</h4>
+            <h4 className='mb-lg-4'>All Category</h4>
             <div>
                 {
                     categories.map(category => <p key={category._id}>

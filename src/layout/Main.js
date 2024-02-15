@@ -12,7 +12,7 @@ const Main = () => {
         <div>
             <Heading></Heading>
             <Header></Header>
-            <div className='bg-light py-5'>
+            <div className='py-4'>
                 <Container>
                     <Row>
                         <Col lg="2" className='d-none d-lg-block'>

@@ -25,7 +25,7 @@ const Header = () => {
                 <Navbar className='container' key={expand} bg="white" expand={expand} >
                     <Container fluid>
                         <Navbar.Brand as={Link} to='/' className='d-flex align-items-center'>
-                            <img style={{ height: '40px' }} src={logo} alt="" />
+                            <img style={{ height: '30px' }} src={logo} alt="Logo" />
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
@@ -35,38 +35,20 @@ const Header = () => {
                         >
                             <Offcanvas.Header closeButton>
                                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} className='d-flex align-items-center'>
-                                    <img style={{ height: '40px', margin: '0' }} src={logo} alt="" />
+                                    <img style={{ height: '30px', margin: '0' }} src={logo} alt="logo" />
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
                                 <Nav className="justify-content-end align-items-center flex-grow-1 pe-3">
                                     <Nav.Link as={Link} to="/profile" title='Profile Setting' >
-                                        {
-                                            user?.photoURL ?
-                                                (
-                                                    <Image
-                                                        src={user?.photoURL}
-                                                        className='border border-2 border-warning'
-                                                        style={{ height: '40px' }}
-                                                        roundedCircle
-                                                    ></Image>
-                                                )
-                                                :
-                                                (
-                                                    <Image
-                                                        src={userIcon}
-                                                        style={{ height: '40px' }}
-                                                        roundedCircle
-                                                    ></Image>
-                                                )
-                                        }
+                                        <Image src={userIcon} style={{ height: '40px' }} roundedCircle></Image>
                                     </Nav.Link>
 
                                     {
                                         user?.uid || user?.email ?
                                             <>
-                                                <Button variant="primary" onClick={handleLogOut}>Logout</Button>
-                                                <span className='ms-2'>{user?.displayName}</span>
+                                                <Button className='px-4 rounded-1' variant="dark" onClick={handleLogOut}>Logout</Button>
+                                                <span className='ms-lg-2 mt-sm-2 mt-lg-0 fw-semibold'>{user?.displayName}</span>
                                             </>
                                             :
                                             <>

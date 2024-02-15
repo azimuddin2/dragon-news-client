@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { FaArrowRight, FaStar } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
+import { IoArrowBack } from "react-icons/io5";
 import { Link, useLoaderData } from 'react-router-dom';
 
 const News = () => {
     const news = useLoaderData();
-    const { title, image_url, details, author, rating, category_id} = news;
+    const { title, image_url, details, author, rating, category_id } = news;
 
     return (
         <div>
@@ -28,8 +29,11 @@ const News = () => {
                     <Card.Text>
                         {details}
                     </Card.Text>
-                    <Link to={`/category/${category_id}`}>
-                        <Button variant="primary">All New in this category <FaArrowRight></FaArrowRight></Button>
+                    <Link to={`/category/${category_id}`} className='text-decoration-none'>
+                        <Button variant="primary" className='d-flex align-items-center'>
+                            <IoArrowBack className='me-1'/>
+                            <span>All New in this category</span>
+                        </Button>
                     </Link>
                 </Card.Body>
             </Card>

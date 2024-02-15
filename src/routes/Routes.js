@@ -36,14 +36,6 @@ const router = createBrowserRouter([
                 }
             },
             {
-                path: 'register',
-                element: <Register></Register>
-            },
-            {
-                path: 'login',
-                element: <Login></Login>
-            },
-            {
                 path: 'profile',
                 element: <PrivateRoute>
                     <ProfileSetting></ProfileSetting>
@@ -54,6 +46,14 @@ const router = createBrowserRouter([
                 element: <TermsAndConditions></TermsAndConditions>
             }
         ],
+    },
+    {
+        path: 'register',
+        element: <Register></Register>
+    },
+    {
+        path: 'login',
+        element: <Login></Login>
     },
 ]);
 

@@ -7,6 +7,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import entertainment from '../../../image/entertainment.png';
 import internationalNew from '../../../image/international-news.png';
 import sport from '../../../image/sport.png';
+import qZone1 from '../../../image/qZone1.png';
+import qZone2 from '../../../image/qZone2.png';
+import qZone3 from '../../../image/qZone3.png';
 
 const RightSideNav = () => {
     const { signInWithGoogle } = useContext(AuthContext);
@@ -105,6 +108,12 @@ const RightSideNav = () => {
                         />
                     </Carousel.Item>
                 </Carousel>
+            </div>
+            <div className='bg-light text-center py-4'>
+                <h2 className='text-start fs-4 ms-4'>Q-Zone</h2>
+                <img src={qZone1} alt="Q Zone" />
+                <img src={qZone2} alt="Q Zone" />
+                <img src={qZone3} alt="Q Zone" />
             </div>
         </div>
     );

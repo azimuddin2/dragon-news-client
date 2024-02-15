@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CustomLink from '../../../components/CustomLink/CustomLink';
-
+import LeftSideNews from '../../../components/LeftSideNews/LeftSideNews';
 
 const LeftSideNav = () => {
     const [categories, setCategories] = useState([]);
@@ -16,13 +16,14 @@ const LeftSideNav = () => {
             <h4 className='mb-lg-4'>All Category</h4>
             <div>
                 {
-                    categories.map(category => <p key={category._id}>
+                    categories?.map(category => <p key={category._id}>
                         <CustomLink to={`/category/${category._id}`}>
                             {category.name}
                         </CustomLink>
                     </p>)
                 }
             </div>
+            <LeftSideNews></LeftSideNews>
         </div>
     );
 };

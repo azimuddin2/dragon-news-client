@@ -101,7 +101,7 @@ const Register = () => {
                     >
                         Register
                     </Button>
-                    <p className='text-center mt-3'>Already Have An Account?<Link className='link-dark fw-semibold' to={'/login'}>Register</Link></p>
+                    <p className='text-center mt-3'>Already Have An Account?<Link className='link-dark fw-semibold' to={'/login'}>Login</Link></p>
                 </Form>
             </div>
         </section>

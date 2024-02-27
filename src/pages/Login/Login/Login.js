@@ -43,8 +43,8 @@ const Login = () => {
     return (
         <section className='form-section bg-light d-flex justify-content-center align-items-center'>
             <div className='container'>
-                <Link to={'/'} className='d-flex justify-content-center'>
-                    <img src={logo} alt="logo" style={{ height: '40px' }} />
+                <Link to='/' className='d-flex justify-content-center'>
+                    <img src={logo} alt="logo" className='logo'/>
                 </Link>
                 <Form onSubmit={handleSubmit} className='form'>
                     <h2 className='form-title'>Login your account</h2>
@@ -54,8 +54,8 @@ const Login = () => {
                             name='email'
                             type="email"
                             placeholder="Enter your email address"
-                            required
                             className='py-2'
+                            required
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -64,15 +64,15 @@ const Login = () => {
                             name='password'
                             type="password"
                             placeholder="Enter your password"
-                            required
                             className='py-2'
+                            required
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check
                             onClick={() => setAccepted(!accepted)}
                             type="checkbox"
-                            label="Check me out"
+                            label="Remember me"
                         />
                     </Form.Group>
                     <Button

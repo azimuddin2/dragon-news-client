@@ -25,32 +25,48 @@ const ProfileSetting = () => {
             .catch(error => {
                 toast.error(error.message)
             })
-    }
+    };
 
     return (
         <section>
             <div className='text-center rounded'>
-                <img className='w-75' src={personalSetting} alt="" />
+                <img className='mx-auto w-75' src={personalSetting} alt="gif" />
             </div>
-
-            <div className='p-3 p-lg-5 shadow-sm bg-white rounded'>
+            <div className='p-4 p-lg-5 border bg-white rounded'>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Your name</Form.Label>
-                        <Form.Control name='name' type="text" placeholder="Enter name" required />
+                        <Form.Control
+                            defaultValue={user?.displayName || ''}
+                            name='name'
+                            type="text"
+                            placeholder="Enter your name"
+                            required
+                        />
                     </Form.Group>
-
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control value={user?.email} disabled required />
+                        <Form.Control
+                            value={user?.email}
+                            disabled
+                            required
+                        />
                     </Form.Group>
-
                     <Form.Group className="mb-3" controlId="formBasicImage">
                         <Form.Label>Your Picture</Form.Label>
-                        <Form.Control name='image' type="text" placeholder="Image URL" />
+                        <Form.Control
+                            name='image'
+                            type="text"
+                            placeholder="Image URL"
+                        />
                     </Form.Group>
-
-                    <Button className='px-4' variant="primary" type="submit">Update Profile</Button>
+                    <Button
+                        className='px-4'
+                        variant="primary"
+                        type="submit"
+                    >
+                        Update Profile
+                    </Button>
                 </Form>
             </div>
         </section>

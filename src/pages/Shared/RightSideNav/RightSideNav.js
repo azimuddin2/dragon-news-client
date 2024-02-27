@@ -109,7 +109,7 @@ const RightSideNav = () => {
                     </Carousel.Item>
                 </Carousel>
             </div>
-            <div className='bg-light text-center py-4'>
+            <div className='bg-light text-center py-4 mt-2'>
                 <h2 className='text-start fs-4 ms-4'>Q-Zone</h2>
                 <img src={qZone1} alt="Q Zone" />
                 <img src={qZone2} alt="Q Zone" />

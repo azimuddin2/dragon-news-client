@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import './Register.css';
 
 const Register = () => {
     const [accepted, setAccepted] = useState(false);

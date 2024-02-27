@@ -1,18 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import logo from '../../../image/logo.png';
+import './Login.css';
 
 const Login = () => {
     const [accepted, setAccepted] = useState(false);
     const { signIn, setLoading } = useContext(AuthContext);
+
     const navigate = useNavigate();
     const location = useLocation();
-
     const from = location.state?.from?.pathname || '/';
 
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -36,31 +38,55 @@ const Login = () => {
             .finally(() => {
                 setLoading(false);
             })
-    }
+    };
 
     return (
-        <div className='p-3 p-lg-5 shadow-sm bg-white rounded'>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" required />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control name='password' type="password" placeholder="Password" required />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check 
-                    onClick={ () => setAccepted(!accepted)}
-                    type="checkbox" 
-                    label="Check me out" 
-                    />
-                </Form.Group>
-                <Button disabled={!accepted} className='px-4' variant="primary" type="submit">Login</Button>
-            </Form>
-        </div>
+        <section className='form-section bg-light d-flex justify-content-center align-items-center'>
+            <div className='container'>
+                <Link to={'/'} className='d-flex justify-content-center'>
+                    <img src={logo} alt="logo" style={{ height: '40px' }} />
+                </Link>
+                <Form onSubmit={handleSubmit} className='form'>
+                    <h2 className='form-title'>Login your account</h2>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label className='fw-semibold'>Email address</Form.Label>
+                        <Form.Control
+                            name='email'
+                            type="email"
+                            placeholder="Enter your email address"
+                            required
+                            className='py-2'
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label className='fw-semibold'>Password</Form.Label>
+                        <Form.Control
+                            name='password'
+                            type="password"
+                            placeholder="Enter your password"
+                            required
+                            className='py-2'
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Check
+                            onClick={() => setAccepted(!accepted)}
+                            type="checkbox"
+                            label="Check me out"
+                        />
+                    </Form.Group>
+                    <Button
+                        disabled={!accepted}
+                        className='px-4 w-100 p-2'
+                        variant="dark"
+                        type="submit"
+                    >
+                        Login
+                    </Button>
+                    <p className='text-center mt-3'>Dont’t Have An Account? <Link className='link-dark fw-semibold' to={'/register'}>Register</Link></p>
+                </Form>
+            </div>
+        </section>
     );
 };
 
